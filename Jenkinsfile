@@ -56,7 +56,7 @@ pipeline {
           echo 'always prints this'
         }
         success {
-          echo 'alway prints while success'    
+          echo 'alway prints on success'    
         }
         unstable {
           echo 'prints when unstable'
