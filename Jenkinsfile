@@ -1,7 +1,4 @@
-# Jenkinsfile-for-spring-boot
-
 pipeline {
-
   agent {
     label 'label name'
   }
@@ -17,9 +14,7 @@ pipeline {
   }
   
   stages {
-    
     stage('one') {
-      
       steps {
         echo 'This is step one'
       }
@@ -27,10 +22,30 @@ pipeline {
       steps {
         echo 'This is step two'
       }
-      
-      
-      
     }
     
+    parallel {
+      stage('parallel stage') {
+        echo 'This is parallel stage one'
+      }
+      
+      stage('parallel stage') {
+        echo 'This is parallel stage two'
+      }
+    }
+    
+    stage('two) {
+      parallel {
+        steps {
+          echo 'parallel steps'
+        }
+        
+        steps {
+          echo 'parallel steps'
+        }
+      }
+    }
+          
+          
   }
 }
