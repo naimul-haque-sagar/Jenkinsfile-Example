@@ -15,6 +15,11 @@ pipeline {
   
   stages {
     stage('one') {
+      
+      when {
+        branch 'master'
+      }
+      
       steps {
         echo 'This is step one'
       }
@@ -46,6 +51,23 @@ pipeline {
       }
     }
           
+    post {
+        always {
+          echo 'always prints this'
+        }
+        success {
+          echo 'alway prints while success'    
+        }
+        unstable {
+          echo 'prints when unstable'
+        }
+        failure {
+          echo 'prints when failure'    
+        }
+    }
           
+    options {
+
+    }     
   }
 }
